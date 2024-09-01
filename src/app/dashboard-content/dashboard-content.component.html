@@ -1,0 +1,45 @@
+<div class="dashboard-content">
+    <div class="card-container">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Attendance Module</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Mark you attendance here</p>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Attendance Sheet</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Download Attendance Sheet</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <mat-card class="table-card">
+      <mat-card-header>
+        <mat-card-title>Data Table</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <!-- Define columns here -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="age">
+            <th mat-header-cell *matHeaderCellDef>Age</th>
+            <td mat-cell *matCellDef="let element">{{element.age}}</td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

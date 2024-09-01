@@ -1,20 +1,5 @@
-.dashboard-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .card-container {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .table-card {
-    margin-top: 20px;
-  }
-  
-  mat-card {
-    width: 300px;
+/* app.component.css */
+.main-content {
+    padding-bottom: 60px; /* Adjust based on footer height */
   }
   

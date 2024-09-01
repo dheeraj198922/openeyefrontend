@@ -1,44 +1,29 @@
-<div class="dashboard-content">
-  <div class="card-container">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Attendance Module</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>Mark you attendance here</p>
-      </mat-card-content>
-    </mat-card>
+<app-header></app-header>
 
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Attendance Sheet</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>Download Attendance Sheet</p>
-      </mat-card-content>
-    </mat-card>
-  </div>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+  (closed)="events.push('close!')">
+    <mat-nav-list>
+      <mat-list-item>Home  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon></mat-list-item>
+      <mat-list-item>Reports</mat-list-item>
+      <mat-list-item>Settings</mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
 
-  <mat-card class="table-card">
-    <mat-card-header>
-      <mat-card-title>Data Table</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <!-- Define columns here -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>Name</th>
-          <td mat-cell *matCellDef="let element">{{element.name}}</td>
-        </ng-container>
 
-        <ng-container matColumnDef="age">
-          <th mat-header-cell *matHeaderCellDef>Age</th>
-          <td mat-cell *matCellDef="let element">{{element.age}}</td>
-        </ng-container>
+    <mat-sidenav-content>
+      <p><button  mat-button   [(ngModel)]="opened" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button></p>
+      <!-- <button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p> -->
+      <!-- <p>Events:</p> -->
+      <!-- <div class="example-events">
+        @for (e of events; track e) {
+          <div>{{e}}</div>
+        }
+      </div> -->
+      <app-dashboard-content></app-dashboard-content> 
+    </mat-sidenav-content>
+</mat-sidenav-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    </mat-card-content>
-  </mat-card>
-</div>
+<app-footer></app-footer>

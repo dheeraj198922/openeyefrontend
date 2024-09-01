@@ -1,28 +1,47 @@
 import { Component } from '@angular/core';
-import {MatCardContent, MatCardHeader, MatCardModule, MatCardTitle} from '@angular/material/card';
-import {MatTable} from '@angular/material/table';
+import { RouterOutlet } from '@angular/router';
+import { MatSidenavContainer, MatSidenavContent, MatSidenav} from '@angular/material/sidenav';
+import {MatNavList, MatListItem} from '@angular/material/list';
+import {FormsModule} from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
+import { ImageService } from '../service/image.service';
+import { DashboardContentComponent } from '../dashboard-content/dashboard-content.component';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [
-     MatCardModule,
-     MatCardHeader, 
-     MatCardTitle, 
-     MatCardContent, 
-     MatTable
+    RouterOutlet, 
+    HeaderComponent, 
+    FormsModule,
+    FooterComponent,
+     DashboardComponent, 
+     MatSidenavContainer, 
+     MatSidenavContent, 
+     MatSidenav,
+     MatNavList,
+     MatListItem,
+     MatButtonModule, MatDividerModule, MatIconModule,
+     DashboardContentComponent
     ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
-  ELEMENT_DATA = [
-    {name: 'John', age: 25},
-    {name: 'Jane', age: 30},
-    {name: 'Mike', age: 35},
-  ];
-  displayedColumns: string[] = ['name', 'age'];
-  dataSource = this.ELEMENT_DATA;
+  title = 'openeyefrontend';
+  events: string[] = [];
+  opened: boolean = true;
 
-
+  constructor(private imageService : ImageService){
+    this.getImage();
+  }
+  getImage(){
+    // this.imageService.getImage().subscribe(value=>{
+    //   console.log(value);
+    // })
+  }
 
 }
